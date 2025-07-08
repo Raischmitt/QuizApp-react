@@ -7,7 +7,7 @@ import QUESTIONS from '../question.js';
 export default function Question({
     questionIndex,
     onSelectAnswer,
-    onSkipAnnswer
+    onSkipAnswer
 }) {
     const [answer, setAnswer] = useState({
         selectedAnswer: '',
@@ -33,7 +33,7 @@ export default function Question({
         setTimeout(() => {
             setAnswer({
                 selectedAnswer: answer,
-                isCorrect: Question[questionIndex].answer[0] === answer
+                isCorrect: QUESTIONS[questionIndex].answers[0] === answer
             })
 
             setTimeout(() => {
@@ -55,7 +55,7 @@ export default function Question({
             <QuestionTimer
                 key={timer}
                 timeout={timer}
-                onTimeout={answer.selectedAnswer === '' ? onSkipAnnswer : null}
+                onTimeout={answer.selectedAnswer === '' ? onSkipAnswer : null}
                 mode={answerState}
             />
 

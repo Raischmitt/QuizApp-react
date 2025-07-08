@@ -23,15 +23,15 @@ export default function Summary({ userAnswers }) {
             <h2>Quiz Complete!</h2>
             <div id="summary-stats">
                 <p>
-                    <span className="number">{skippedAnswersShare}</span>
+                    <span className="number">{skippedAnswersShare} %</span>
                     <span className="text">skipped</span>
                 </p>
                 <p>
-                    <span className="number">{correctdAnswersShare}</span>
+                    <span className="number">{correctdAnswersShare} %</span>
                     <span className="text">answered correctly</span>
                 </p>
                 <p>
-                    <span className="number">{wrongAnswersShare}</span>
+                    <span className="number">{wrongAnswersShare} %</span>
                     <span className="text">answered incorrectly</span>
                 </p>
             </div>
@@ -40,20 +40,20 @@ export default function Summary({ userAnswers }) {
                     let cssClass = 'user-answer';
 
                     if (answer === null) {
-                        cssClass += 'skipped';
+                        cssClass += ' skipped';
                     } else if (answer === QUESTIONS[index].answers[0]) {
-                        cssClass += 'correct';
+                        cssClass += ' correct';
                     } else {
-                        cssClass += 'wrong';
+                        cssClass += ' wrong';
                     }
 
                     return (
-                        <li key={answer}>
+                        <li key={index}>
                             <h3>{index + 1}</h3>
                             <p className="question">{QUESTIONS[index].text}</p>
                             <p className={cssClass}>{answer ?? 'Skipped'}</p>
                         </li>
-                    )
+                    );
                 })}
 
             </ol>
